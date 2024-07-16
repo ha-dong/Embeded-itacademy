@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+</head>
+	<h3><span id = "sp"></span></h3>
+<body>
+    <script>
+    if(EventSource){
+        let es = new EventSource("http://localhost:8888/ssetest/sse.jsp");
+        es.onopen = function(event){
+            console.log("서버에 연결")
+        }
+        es.onerror = function(event){
+            //console.log("에러!" + event.data)
+        }
+        es.onmessage = function(event){
+            console.log("서버에서 받은 메세지: " + event.data);
+            document.getElementById("sp").innerHTML = event.data;
+        }
+    }else{
+        console.log("이 브라우저는 sse를 지원하지 않습니다.")
+    }
+    </script>
+</body>
+</html>
