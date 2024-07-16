@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AJAX jsonex1</title>
+    <script src="js/jsonex6.js"></script>
+    <style>
+    	table{width: 640px;}
+    	table, th, td{border: 1px solid #333; border-collapse: collapse;}
+    	caption{font-size: 24px; font-weight: bold;}
+    	thread{background-color: #eeee};
+    	input[type="text"]{width: 80px};
+    </style>
+</head>
+<body>
+    <div id ="wrapper">
+        <p>
+        	학생1 이름: <input id="s1name" type="text"/>&nbsp;
+        	학생1 국어: <input id="s1kor" type="text"/>&nbsp;
+        	학생1 영어: <input id="s1eng" type="text"/>&nbsp;
+        	학생1 수학: <input id="s1math" type="text"/>&nbsp;
+        </p>
+        <p>
+        	학생2 이름: <input id="s2name" type="text"/>&nbsp;
+        	학생2 국어: <input id="s2kor" type="text"/>&nbsp;
+        	학생2 영어: <input id="s2eng" type="text"/>&nbsp;
+        	학생2 수학: <input id="s2math" type="text"/>&nbsp;
+        </p>
+        <p>
+        	학생3 이름: <input id="s3name" type="text"/>&nbsp;
+        	학생3 국어: <input id="s3kor" type="text"/>&nbsp;
+        	학생3 영어: <input id="s3eng" type="text"/>&nbsp;
+        	학생3 수학: <input id="s3math" type="text"/>&nbsp;
+        </p>
+        <p>
+        	<input id = "btn" type="button" value="성적표 출력">
+        </p>
+        <table>
+        	<caption>학생 성적표</caption>
+        	<thread>
+        		<tr>
+        			<th>이름</th>
+        			<th>국어</th>
+        			<th>영어</th>
+        			<th>수학</th>
+        			<th>총점</th>
+        		</tr>
+        	</thread>
+        	<tbody id = "tb">
+        	</tbody>
+        </table>
+    </div>
+</body>
+</html>
