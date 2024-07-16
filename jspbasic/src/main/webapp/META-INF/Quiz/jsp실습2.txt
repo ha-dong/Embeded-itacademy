@@ -1,0 +1,6 @@
+jsp퀴즈 프로그램
+
+quiz1.jsp~quiz5.jsp, quizResult.jsp
+
+quiz1~5까지 각각 한 문제 씩 출제
+맞춘 결과를 quizresult에 출력
