@@ -1,0 +1,126 @@
+#JSP Directive(지시어)
+	*Page
+	페이지의 속성들을 정의
+	<%page 속성명="속성값%>
+	
+	import:클래스 임포트
+	contentType: MIME 타입(text/plain, text/html, application/json, application/xml...)
+
+*incluede
+	페이지 내에 페이지를 삽입할 때 사용
+	<%@include file = "파일명"  %>
+	속성
+	파일명: jsp파일명
+	포함하고 있는 jsp가 서블릿으로 컴파일될 때 까지 같이 컴파일 됨
+	
+	&taglib: 페이지내에서 사용할 태그 라이브러리를 정의
+	태그 라이브러리ㅣJSTL(JSP Standard Tag Library), 사용자 정의 태그 라이브러리
+	<% @ taglib uri="태그 라이브러리URI" prefix="접두어" %>
+	
+#Action Tag
+	*형식:<JSP: 태그명 속성명 ="속성값" />
+		ex) <jsp:forward page= "otherpage.jsp />
+		
+	*<jsp:forward: request 포워딩>
+		ex) <jsp:forward page= "otherpage.jsp">
+		
+	*<jsp:include: 컴파일된 페이지를 포함>
+		ex) <jsp:include page= "otherpage.jsp">
+		
+	*<jsp:param:파라미터 설정(forward, include 시 사용)>
+		ex) <jsp: include page="otherpage.jsp>
+				<jsp:param name = "name" value="홍길동" />
+				<jsp:param name = "age" value="20" />
+			</jsp:include>
+			
+	*<jsp:useBeaN: JavaBean을 사용>	
+		ex) <jsp:UseBean
+			 id =  "객체명"
+			 core"page|request|session|application
+				class="클래스 풀네임">	
+	*<jsp:setProperty: 프라터리 값 설정>
+		ex) <jsp:useBeam id ="person" scope=:"request" class="person.Person"
+				<jsp: serPraoperty name = "person" property=name values="홍길동">
+				<jsp: serPraoperty name = "person" property=age values=20>
+				파라미터 변수명과 프라퍼티 변수명이 동일하면 빈 객체의 프라퍼디들을 알림설정
+				<jsp: serPraoperty name = "person" property="*">
+				파라미터 변수명과 프라퍼티 병수 명이 다를 떼
+			</jsp:useBean
+			
+	*<jsp:getProperty: 프라퍼티 값 획득>
+		<jsp:getPraprtty name="person" property>
+		
+
+#EL(Expression Language): 표현식
+
+	*EL은 JSP에서 사용할 수 있는 표현식(값으로 판별될 수 있는 문장)
+		ex) ${100 + 200} (O), ${int i = 100;} (X)
+		
+	*기본 문법: ${}
+		EL내에서 사용된 변수는 pageContext > request > session > application
+			순으로 참조하게 됨
+			
+		ex) ${name}: name변수가 pageContext에 있는자 찾음
+					없으면 request에 있는지 찾음
+					없으면 session에 있는지 찾음
+					없으면 appliction에 있는지 찾음
+	
+	*EL내에 사용된 변수의 스코프를 명시
+		ex) ${pageScope.name} ${requestScope.name}
+			${sessionScope.name} ${applicationScope.name}
+			
+	*EL의 내장 객체
+		-pageContext
+		-servletContext
+		-session
+		-request
+		-response
+		-param
+		-paramValues
+		-header
+		-headerValues
+		-cookie
+		-initParam
+		-pageScope: pageContext의 속성 변수의 값 가져옴
+		-requestScope: request의 속성 변수의 값 가져옴
+		-sessionScope: session의 속성 변수의 값 가져옴
+		-applicationScope: application의 속성 변수의 값 가져옴
+		
+	
+	*EL에서 객체의 프라퍼티를 참조하게 되면 자동으로 getter를 호출하게 됨
+		ex) &{person.name} => person의 getName()을 호출
+		
+		
+		
+	*EL의 연산자
+		div: 나눗셈	ex) ${6 div 3}	(= /)
+		mod: 나머지	ex) ${5 mod 2}	(= %)
+		
+		eq: ==
+		ne: !=
+		
+		it: <
+		gt: >
+		
+		le: <=
+		ge: >=
+		
+		empty: 값이 null이면 true 반환
+			문자열로, Map, Collection(List, Set)의 크기가 0이면 true 반환
+			그 외 모든 경우는 false 반환
+			
+		ex) ${emtry "hello"} 
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
