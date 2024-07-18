@@ -5,7 +5,11 @@
 <%request.setCharacterEncoding("utf-8"); %>
 
 <jsp:useBean id ="product" class="jspbasic.product.Product" />
-<jsp:setProperty name ="product" property="*" />
+<jsp:setProperty name ="product" property="pcomp" />
+<jsp:setProperty name ="product" property="pname" />
+<jsp:setProperty name ="product" property="pcolor" />
+<jsp:setProperty name ="product" property="pamt" />
+<jsp:setProperty name ="product" property="pprice" />
 
 <%
 ProductProc productProc = new ProductProc();

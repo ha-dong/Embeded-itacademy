@@ -21,7 +21,7 @@ public class ProductProc {
 		List<Product>productList = new ArrayList<Product>();
 			while(rs.next()) {
 			Product product = new Product();
-			product.setPno(rs.getString("pno"));
+			product.setPno(rs.getInt("pno"));
 			product.setPcomp(rs.getString("pcomp"));
 			product.setPname(rs.getString("pname"));
 			product.setPcolor(rs.getString("pcolor"));
@@ -33,6 +33,29 @@ public class ProductProc {
 			ConnectionUtil.closeConnection(conn);
 			return productList;
 		}
+	
+	public Product getProduct(int pno) throws Exception{
+		conn = ConnectionUtil.getConnection();
+		String sql = "select * from product where pno=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, pno);
+		rs = pstmt.executeQuery();
+		
+		Product product = null;
+			if(rs.next()) {
+			product = new Product();
+			product.setPno(rs.getInt("pno"));
+			product.setPcomp(rs.getString("pcomp"));
+			product.setPname(rs.getString("pname"));
+			product.setPcolor(rs.getString("pcolor"));
+			product.setPamt(rs.getString("pamt"));
+			product.setPprice(rs.getString("pprice"));
+			product.setPmdate(rs.getString("pmdate"));
+			}
+			ConnectionUtil.closeConnection(conn);
+			return product;
+		}
+	
 	
 	public int writeProduct(Product product) throws Exception{
 		conn = ConnectionUtil.getConnection();
