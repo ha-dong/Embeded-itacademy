@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Author">
+	<insert id = "insertComment" parameterType="Comment">
+		insert into comment
+		values(seq_Comment.nextval, 0, #{commentName}, #{commentTitle})
+	</insert>
+
+	<select id = "countComment" resultType="int">
+		select count(*)from Comment
+	</select>
+	
+	<update id="updateComment" parameterType="Comment">
+		UPDATE Author
+		set Author_Name=#{CommentName}, Author_Title=#{CommentTitle}
+		where author_id=#{commentId}
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+        DELETE Comment
+        WHERE comment_id = #{commentId}
+    </delete>
+</mapper>

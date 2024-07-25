@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Author">
+	<insert id = "insertAuthor" parameterType="Author">
+		insert into author
+		values(seq_author.nextval, #{authorName}, 1)
+	</insert>
+
+	<select id = "countAuthor" resultType="int">
+		select count(*)from author
+	</select>
+	
+	<update id="updateAuthor" parameterType="Author">
+		UPDATE Author
+		set Author_Name=#{AuthorName}, Author_Title=#{AuthorTitle}
+		where author_id=#{authorId}
+	</update>
+	
+	<delete id="deleteAuthor" parameterType="int">
+        DELETE Author
+        WHERE author_id = #{authorId}
+    </delete>
+</mapper>
